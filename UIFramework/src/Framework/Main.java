@@ -19,7 +19,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		//DELET THIS >:(
+		//DELET THIS Kindly >:(
 		Dark dark = new Dark();
 		JFrame frame = dark.getJFrame();
 		JPanel panel = dark.getJPanelBackground();
