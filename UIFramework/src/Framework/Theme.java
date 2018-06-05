@@ -1,14 +1,17 @@
 package Framework;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Event;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Menu;
+import java.awt.Window.Type;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -34,6 +37,8 @@ public abstract class Theme implements ITheme
 	
 	public Font PrimaryFont;
 	
+	public ArrayList<Component> allComponents = new ArrayList<Component>();
+	
 	@Override
 	public void init() 
 	{
@@ -41,6 +46,10 @@ public abstract class Theme implements ITheme
 		UIManager.put("MenuItem.selectionBackground", this.AccentColor);
 	}
 	
+	/**
+	 * Gets a styled JFrame
+	 * @return styled JFrame
+	 * */	
 	@Override
 	public JFrame getJFrame() 
 	{
@@ -51,38 +60,57 @@ public abstract class Theme implements ITheme
 		return result;
 	}
 	
+	/**
+	 * Gets a styled JPanel
+	 * @return styled JPanel
+	 * */	
 	@Override
 	public JPanel getJPanelBackground() 
 	{
 		JPanel result = new JPanel();
 		
 		result.setBackground(DarkPrimaryColor);
+		allComponents.add(result);
 		
 		return result;
 	}
 	
+	/**
+	 * Gets a styled JPanel
+	 * @return styled JPanel
+	 * */	
 	@Override
 	public JPanel getJPanelForeground() 
 	{
 		JPanel result = new JPanel();
 		
 		result.setBackground(LightPrimaryColor);
+		allComponents.add(result);
 		
 		return result;
 	}
 	
+	/**
+	 * Gets a styled JMenuBar
+	 * @return styled JMenuBar
+	 * */	
 	@Override
 	public JMenuBar getJMenuBar() 
 	{
 		JMenuBar result = new JMenuBar();
 		
 		result.setBackground(LightPrimaryColor);
-		
 		result.setBorder(BorderFactory.createEmptyBorder());
+		allComponents.add(result);
 		
 		return result;
 	}
 	
+	/**
+	 * Gets a styled JMenu
+	 * @param title displayed text
+	 * @return styled JMenu
+	 * */
 	@Override
 	public JMenu getJMenu(String title) 
 	{
@@ -98,10 +126,16 @@ public abstract class Theme implements ITheme
 		//Layout
 		result.setBorder(BorderFactory.createEmptyBorder());
 		result.getPopupMenu().setBorder(null);
+		allComponents.add(result);
 		
 		return result;
 	}
 	
+	/**
+	 * Gets a styled JMenuItem
+	 * @param title displayed text
+	 * @return styled JMenuItem
+	 * */
 	@Override
 	public JMenuItem getJMenuItem(String title) 
 	{
@@ -127,11 +161,17 @@ public abstract class Theme implements ITheme
 		
 		//Layout
 		result.setBorder(BorderFactory.createEmptyBorder());
-		
+		allComponents.add(result);
 		
 		return result;
 	}
 	
+	/**
+	 * Gets a styled JButton
+	 * @param title displayed text
+	 * @param roundedCorners true sets Buttons corners to rounded
+	 * @return styled JButton
+	 * */
 	@Override
 	public JButton getJButton(String title, Boolean roundedCorners)
 	{
@@ -177,7 +217,54 @@ public abstract class Theme implements ITheme
 		result.setBorderPainted(false);
 		result.setForeground(PrimaryText);
 		result.setFocusPainted(false);
+		allComponents.add(result);
 		
+		return result;
+	}
+	
+	/**
+	 * Gets all components 
+	 * NOTE: Doesn't work on JMenuItems
+	 * 
+	 * @return Array containing result
+	 * */	
+	@Override
+	public Component[] getAllComponents() 
+	{
+		Component[] result = new Component[allComponents.size()];
+		for(int n = 0; n < allComponents.size(); n++)
+		{
+			result[n] = allComponents.get(n);
+		}
+		
+		return result;
+	}
+	
+	/**
+	 * Gets all components matching the parameters type 
+	 * NOTE: Doesn't work on JMenuItems
+	 * 
+	 * @param type Class extending java.awt.Component
+	 * @return Array containing filtered result
+	 * */
+	@Override //TODO doesn't work on JMenuItems
+	public Component[] getComponentsOfType(Class<?> type) 
+	{
+		Component[] arr = getAllComponents();
+		ArrayList<Component> filteredList = new ArrayList<Component>();
+		for (Component comp : arr) 
+		{
+			if(comp.getClass() == type)
+			{
+				filteredList.add(comp);
+			}
+		}
+		
+		Component[] result = new Component[filteredList.size()];
+		for(int n = 0; n < filteredList.size(); n++)
+		{
+			result[n] = filteredList.get(n);
+		}
 		
 		return result;
 	}

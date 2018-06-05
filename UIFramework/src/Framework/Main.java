@@ -6,12 +6,15 @@ import java.awt.LayoutManager;
 import java.awt.Toolkit;
 import java.awt.Button;
 import java.awt.Color;
+import java.awt.Component;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.tools.Tool;
 
 import Themes.Dark;
 
@@ -33,7 +36,8 @@ public class Main {
 		panel.add(dark.getJButton("Button", true));
 		frame.add(panel);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(Toolkit.getDefaultToolkit().getScreenSize());
+		frame.setSize(new Dimension(Toolkit.getDefaultToolkit().getScreenSize().width / 2,Toolkit.getDefaultToolkit().getScreenSize().width / 2));
+		frame.setExtendedState(frame.getExtendedState()|JFrame.MAXIMIZED_BOTH );
 		JMenuBar bar = dark.getJMenuBar();
 		JMenu men = dark.getJMenu("File");
 		JMenuItem menuItem = dark.getJMenuItem("Save...");
@@ -49,7 +53,12 @@ public class Main {
 		bar.add(men);
 		frame.setJMenuBar(bar);
 		frame.setVisible(true);
-		Button button;
+		
+		Component[] arr = dark.getComponentsOfType(JMenuItem.class);
+		for (Component comp : arr) 
+		{
+			System.out.println(((JMenuItem) comp).hashCode());
+		}
 
 	}
 

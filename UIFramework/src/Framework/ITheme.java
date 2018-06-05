@@ -1,5 +1,8 @@
 package Framework;
 
+import java.awt.Component;
+import java.awt.Window.Type;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -18,6 +21,8 @@ public interface ITheme
 	public JMenuItem getJMenuItem(String title);
 	public JButton getJButton(String title,Boolean roundedCorners);
 	public void init();
+	public Component[] getAllComponents();
+	public Component[] getComponentsOfType(Class<?> type);
 	
 
 }
