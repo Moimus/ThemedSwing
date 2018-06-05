@@ -54,10 +54,10 @@ public class Main {
 		frame.setJMenuBar(bar);
 		frame.setVisible(true);
 		
-		Component[] arr = dark.getComponentsOfType(JMenuItem.class);
+		Component[] arr = dark.getComponentsOfType(JButton.class);
 		for (Component comp : arr) 
 		{
-			System.out.println(((JMenuItem) comp).hashCode());
+			System.out.println(((JButton) comp).hashCode());
 		}
 
 	}
