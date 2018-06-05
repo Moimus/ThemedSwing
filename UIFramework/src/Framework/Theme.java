@@ -1,8 +1,14 @@
 package Framework;
 
 import java.awt.Color;
+import java.awt.Event;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Menu;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -11,6 +17,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.UIManager;
 
 import Shapes.RoundedCorners;
 
@@ -26,6 +33,13 @@ public abstract class Theme implements ITheme
 	public Color DividerColor;
 	
 	public Font PrimaryFont;
+	
+	@Override
+	public void init() 
+	{
+		UIManager.put("Menu.selectionBackground", this.AccentColor);
+		UIManager.put("MenuItem.selectionBackground", this.AccentColor);
+	}
 	
 	@Override
 	public JFrame getJFrame() 
@@ -98,7 +112,10 @@ public abstract class Theme implements ITheme
 			{
 
 			}
+			
+
 		};
+		
 		
 		//Color
 		result.setForeground(PrimaryText);
@@ -123,6 +140,41 @@ public abstract class Theme implements ITheme
 		//result.setBorder(BorderFactory.createEmptyBorder());
 		result.setFont(PrimaryFont);
 		result.setBackground(LightPrimaryColor);
+		result.addFocusListener(new FocusListener() 
+		{
+			
+			@Override
+			public void focusLost(FocusEvent arg0) 
+			{
+				result.setBackground(LightPrimaryColor);
+				
+			}
+			
+			@Override
+			public void focusGained(FocusEvent arg0) 
+			{
+				result.setBackground(LightPrimaryColor);
+				
+			}
+			
+		});
+		result.addMouseListener(new MouseAdapter() 
+		{
+			@Override
+			public void mouseEntered(MouseEvent e) 
+			{
+				result.setBackground(AccentColor);
+				super.mouseEntered(e);
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) 
+			{
+				result.setBackground(LightPrimaryColor);
+				super.mouseExited(e);
+			}
+		});
+		result.setBorderPainted(false);
 		result.setForeground(PrimaryText);
 		result.setFocusPainted(false);
 		

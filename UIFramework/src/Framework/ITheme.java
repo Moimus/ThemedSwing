@@ -16,8 +16,8 @@ public interface ITheme
 	public JMenuBar getJMenuBar();
 	public JMenu getJMenu(String title);
 	public JMenuItem getJMenuItem(String title);
-	
 	public JButton getJButton(String title,Boolean roundedCorners);
+	public void init();
 	
 
 }
