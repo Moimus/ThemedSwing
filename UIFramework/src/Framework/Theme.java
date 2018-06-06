@@ -26,6 +26,7 @@ import Shapes.RoundedCorners;
 
 public abstract class Theme implements ITheme
 {
+	//Colors
 	public Color DarkPrimaryColor;
 	public Color LightPrimaryColor;
 	public Color PrimaryColor;
@@ -35,15 +36,26 @@ public abstract class Theme implements ITheme
 	public Color SecondaryText;
 	public Color DividerColor;
 	
+	//Fonts
 	public Font PrimaryFont;
 	
+	//Icons
+	Icons icons;
+	
+	//Paths
+	public String radioButtonCheckedPath;
+	public String radioButtonUnCheckedPath;
+	
+	//ComponentLists
 	public ArrayList<Component> allComponents = new ArrayList<Component>();
+	
 	
 	@Override
 	public void init() 
 	{
 		UIManager.put("Menu.selectionBackground", this.AccentColor);
 		UIManager.put("MenuItem.selectionBackground", this.AccentColor);
+		icons = new Icons(this);
 	}
 	
 	/**
