@@ -17,8 +17,8 @@ public class Icons
 	
 	public Icons(Theme theme)
 	{
-		radioButtonChecked = new ImageIcon(scaleImage(theme.radioButtonCheckedPath,32,32));
-		radioButtonUnchecked = new ImageIcon(scaleImage(theme.radioButtonUnCheckedPath,32,32));
+		radioButtonChecked = new ImageIcon(scaleImage(theme.radioButtonCheckedPath,24,24));
+		radioButtonUnchecked = new ImageIcon(scaleImage(theme.radioButtonUnCheckedPath,24,24));
 	}
 	
 	//TODO
