@@ -9,6 +9,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 
 public interface ITheme 
 {
@@ -20,6 +21,7 @@ public interface ITheme
 	public JMenu getJMenu(String title);
 	public JMenuItem getJMenuItem(String title);
 	public JButton getJButton(String title,Boolean roundedCorners);
+	public JRadioButton getJRadioButton();
 	public void init();
 	public Component[] getAllComponents();
 	public Component[] getComponentsOfType(Class<?> type);

@@ -20,6 +20,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.UIManager;
 
 import Shapes.RoundedCorners;
@@ -230,6 +231,17 @@ public abstract class Theme implements ITheme
 		result.setForeground(PrimaryText);
 		result.setFocusPainted(false);
 		allComponents.add(result);
+		
+		return result;
+	}
+	
+	@Override
+	public JRadioButton getJRadioButton() 
+	{
+		JRadioButton result = new JRadioButton();
+		result.setOpaque(false);
+		result.setIcon(this.icons.radioButtonUnchecked);
+		result.setSelectedIcon(this.icons.radioButtonChecked);
 		
 		return result;
 	}

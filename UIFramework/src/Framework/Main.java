@@ -27,14 +27,12 @@ public class Main {
 		JFrame frame = dark.getJFrame();
 		JPanel panel = dark.getJPanelBackground();
 		panel.setLayout(new FlowLayout());
-		panel.add(dark.getJButton("Button", true));
 		frame.add(panel);
+		panel.add(dark.getJRadioButton());
 		panel.add(dark.getJButton("Button", true));
-		frame.add(panel);
 		panel.add(dark.getJButton("Button", true));
-		frame.add(panel);
 		panel.add(dark.getJButton("Button", true));
-		frame.add(panel);
+		panel.add(dark.getJButton("Button", true));
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(new Dimension(Toolkit.getDefaultToolkit().getScreenSize().width / 2,Toolkit.getDefaultToolkit().getScreenSize().width / 2));
 		frame.setExtendedState(frame.getExtendedState()|JFrame.MAXIMIZED_BOTH );

@@ -19,7 +19,7 @@ public class Dark extends Theme
 		this.PrimaryText = new Color(220,220,220);
 		this.PrimaryFont = new Font("Consolas", Font.PLAIN, 16);
 		this.radioButtonCheckedPath = "src/Themes/Dark/Icons/Radiobutton_checked.png";
-		this.radioButtonCheckedPath = "src/Themes/Dark/Icons/Radiobutton_unchecked.png";
+		this.radioButtonUnCheckedPath = "src/Themes/Dark/Icons/Radiobutton_unchecked.png";
 		init();		
 		
 	}
