@@ -14,6 +14,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.JSlider;
 import javax.tools.Tool;
 
 import Themes.Dark;
@@ -28,7 +29,9 @@ public class Main {
 		JPanel panel = dark.getJPanelBackground();
 		panel.setLayout(new FlowLayout());
 		frame.add(panel);
-		panel.add(dark.getJRadioButton());
+		panel.add(dark.getJRadioButton("A RadioButton"));
+		panel.add(dark.getJCheckbox("A CheckBox"));
+		panel.add(dark.getJSlider());
 		panel.add(dark.getJButton("Button", true));
 		panel.add(dark.getJButton("Button", true));
 		panel.add(dark.getJButton("Button", true));

@@ -14,14 +14,17 @@ public class Icons
 {
 	public ImageIcon radioButtonChecked;
 	public ImageIcon radioButtonUnchecked;
+	public ImageIcon checkBoxChecked;
+	public ImageIcon checkBoxUnchecked;
 	
 	public Icons(Theme theme)
 	{
 		radioButtonChecked = new ImageIcon(scaleImage(theme.radioButtonCheckedPath,24,24));
 		radioButtonUnchecked = new ImageIcon(scaleImage(theme.radioButtonUnCheckedPath,24,24));
+		checkBoxChecked = new ImageIcon(scaleImage(theme.checkBoxCheckedPath,24,24));
+		checkBoxUnchecked = new ImageIcon(scaleImage(theme.checkBoxUnCheckedPath,24,24));
 	}
 	
-	//TODO
 	private Image scaleImage(String path, int scaleX, int scaleY)
 	{
 		Image result = null;

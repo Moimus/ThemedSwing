@@ -15,15 +15,19 @@ import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JScrollBar;
+import javax.swing.JSlider;
 import javax.swing.UIManager;
 
 import Shapes.RoundedCorners;
+import Themes.Dark;
 
 public abstract class Theme implements ITheme
 {
@@ -46,6 +50,8 @@ public abstract class Theme implements ITheme
 	//Paths
 	public String radioButtonCheckedPath;
 	public String radioButtonUnCheckedPath;
+	public String checkBoxCheckedPath;
+	public String checkBoxUnCheckedPath;
 	
 	//ComponentLists
 	public ArrayList<Component> allComponents = new ArrayList<Component>();
@@ -235,15 +241,62 @@ public abstract class Theme implements ITheme
 		return result;
 	}
 	
+	/**
+	 * Gets a styled JRadioButton
+	 * @param title displayed text
+	 * @return styled JRadioButton
+	 * */
 	@Override
-	public JRadioButton getJRadioButton() 
+	public JRadioButton getJRadioButton(String title) 
 	{
-		JRadioButton result = new JRadioButton();
+		JRadioButton result = new JRadioButton(title);
+		result.setBorder(BorderFactory.createEmptyBorder());
+		result.setFocusPainted(false);
+		result.setFont(PrimaryFont);
+		result.setForeground(PrimaryText);
 		result.setOpaque(false);
 		result.setIcon(this.icons.radioButtonUnchecked);
 		result.setSelectedIcon(this.icons.radioButtonChecked);
 		
 		return result;
+	}
+	
+	/**
+	 * Gets a styled JCheckbox
+	 * @param title displayed text
+	 * @return styled JCheckbox
+	 * */
+	@Override
+	public JCheckBox getJCheckbox(String title) 
+	{
+		JCheckBox result = new JCheckBox(title);
+		result.setBorder(BorderFactory.createEmptyBorder());
+		result.setFocusPainted(false);
+		result.setFont(PrimaryFont);
+		result.setForeground(PrimaryText);
+		result.setOpaque(false);
+		result.setIcon(this.icons.checkBoxUnchecked);
+		result.setSelectedIcon(this.icons.checkBoxChecked);
+		return result;
+	}
+	
+	
+	//TODO
+	@Override
+	public JSlider getJSlider() 
+	{
+		JSlider result = new JSlider();
+		result.setOpaque(false);
+		
+		return result;
+	}
+	
+	//TODO
+	@Override
+	public JScrollBar getJScrollbar() 
+	{
+
+		return null;
 	}
 	
 	/**
